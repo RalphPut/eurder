@@ -1,4 +1,4 @@
 package com.example.eurder.mapper;
 
-public class CustomerMapper {
+public class ItemMapper {
 }

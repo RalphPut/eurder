@@ -1,4 +1,6 @@
 package com.example.eurder.domain.customer;
 
-public class Customer {
+public enum UserRole {
+    CUSTOMER,
+    ADMIN
 }

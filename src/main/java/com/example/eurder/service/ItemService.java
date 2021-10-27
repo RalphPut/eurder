@@ -1,4 +1,4 @@
 package com.example.eurder.service;
 
-public class CustomerService {
+public class ItemService {
 }

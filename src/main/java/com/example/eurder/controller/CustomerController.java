@@ -1,7 +1,6 @@
 package com.example.eurder.controller;
 
-import com.example.eurder.domain.customer.UserDTO;
-import com.example.eurder.mapper.UserMapper;
+import com.example.eurder.domain.customer.CustomerDTO;
 import com.example.eurder.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,8 +12,7 @@ import java.util.List;
 
 
 @RestController
-@CrossOrigin
-@RequestMapping(path = "/customer")
+@RequestMapping(path = "/customers")
 public class CustomerController {
 
     private final UserService userService;
@@ -28,20 +26,20 @@ public class CustomerController {
 
     @GetMapping(produces = "application/json")
     @ResponseStatus(HttpStatus.OK)
-    public List<UserDTO> getAllCustomers() {
+    public List<CustomerDTO> getAllCustomers() {
 
         return userService.findAllCustomers();
     }
 
     @GetMapping(path = "/{uuid}", produces = "application/json")
     @ResponseStatus(HttpStatus.OK)
-    public UserDTO FindById(@PathVariable String uuid) {
-        return this.userService.findById(uuid);
+    public CustomerDTO FindById(@PathVariable String uuid, @RequestHeader(value = "uuid", required = false) String userId) {
+        return this.userService.findById(uuid,userId);
     }
 
     @PostMapping(consumes = "application/json",produces = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
-    public void registerMember(@RequestBody UserDTO userDTO){
+    public void registerMember(@RequestBody CustomerDTO userDTO){
         userService.registerCustomer(userDTO);
         logger.info(String.format("User with name %s is created",userDTO.getFirstName()));
     }

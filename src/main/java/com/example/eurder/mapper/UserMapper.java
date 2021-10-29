@@ -1,7 +1,7 @@
 package com.example.eurder.mapper;
 
-import com.example.eurder.domain.customer.User;
-import com.example.eurder.domain.customer.UserDTO;
+import com.example.eurder.domain.customer.Customer;
+import com.example.eurder.domain.customer.CustomerDTO;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -10,23 +10,19 @@ import java.util.stream.Collectors;
 @Component
 public class UserMapper {
 
-    public UserDTO toDto(User user) {
-        UserDTO userDTO = new UserDTO(user.getFirstName(), user.getLastName(), user.getAddress(),
+    public CustomerDTO toDto(Customer user) {
+        return new CustomerDTO(user.getUuid(), user.getFirstName(), user.getLastName(), user.getAddress(),
                 user.getPhoneNumber(), user.getUserRole());
-        userDTO.setUuid(user.getUuid());
-        return userDTO;
     }
 
-    public List<UserDTO> toDto(List<User> userList) {
+    public List<CustomerDTO> toDto(List<Customer> userList) {
         return userList.stream()
                 .map(this::toDto)
                 .collect(Collectors.toList());
     }
 
-    public User toUser(UserDTO userDTO) {
-        User user = new User(userDTO.getFirstName(), userDTO.getLastName(), userDTO.getAddress(), userDTO.getPhoneNumber(),
+    public Customer toUser(CustomerDTO userDTO) {
+        return new Customer(userDTO.getFirstName(), userDTO.getLastName(), userDTO.getAddress(), userDTO.getPhoneNumber(),
                 userDTO.getUserRole());
-        user.setUuid(user.getUuid());
-        return user;
     }
 }

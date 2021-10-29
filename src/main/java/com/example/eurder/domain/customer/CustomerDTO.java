@@ -1,10 +1,8 @@
 package com.example.eurder.domain.customer;
 
-import org.springframework.beans.factory.annotation.Required;
-
 import java.util.UUID;
 
-public class User {
+public class CustomerDTO {
     private String uuid;
     private final String firstName;
     private final String lastName;
@@ -13,8 +11,9 @@ public class User {
     private final UserRole userRole;
 
 
-    public User(String firstName, String lastName, Address address, String phoneNumber, UserRole userRole) {
-        this.uuid=UUID.randomUUID().toString();
+
+    public CustomerDTO(String uuid, String firstName, String lastName, Address address, String phoneNumber, UserRole userRole) {
+        this.uuid = uuid;
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
@@ -22,10 +21,12 @@ public class User {
         this.userRole = userRole;
     }
 
-    public  void setUuid(String uuid){
-        this.uuid=uuid;
+  public void setUuid(String uuid){
+        this.uuid = uuid;
     }
-
+    public String getLastName() {
+        return lastName;
+    }
 
     public String getUuid() {
         return uuid;
@@ -33,10 +34,6 @@ public class User {
 
     public String getFirstName() {
         return firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
     }
 
     public Address getAddress() {
@@ -50,4 +47,10 @@ public class User {
     public UserRole getUserRole() {
         return userRole;
     }
+
+
+
+
+
+
 }

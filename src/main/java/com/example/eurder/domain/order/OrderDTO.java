@@ -1,20 +1,24 @@
 package com.example.eurder.domain.order;
 
 import com.example.eurder.domain.customer.Customer;
+import com.example.eurder.repository.UserRepository;
 
 public class OrderDTO {
 
     private final String orderId;
     private final ItemGroup [] itemGroups;
-    private final Customer customer;
-    private int totalPrice;
+    private final String customerId;
+    private final int totalPrice;
 
-    public OrderDTO(String orderId, ItemGroup[] itemGroups, Customer customer) {
+
+    public OrderDTO(String orderId, ItemGroup[] itemGroups, String customerId){
         this.orderId = orderId;
         this.itemGroups = itemGroups;
-        this.customer = customer;
+        this.customerId = customerId;
         this.totalPrice=calculateTotalPrice();
     }
+
+
 
     public String getOrderId() {
         return orderId;
@@ -24,8 +28,8 @@ public class OrderDTO {
         return itemGroups;
     }
 
-    public Customer getCustomer() {
-        return customer;
+    public String getCustomerId() {
+        return customerId;
     }
 
     public int getTotalPrice() {
@@ -39,4 +43,6 @@ public class OrderDTO {
         }
         return totalPrice;
     }
+
+
 }

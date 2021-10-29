@@ -33,8 +33,8 @@ public class ItemRepository {
     public Item findByid(String itemID){
         var foundItem = this.itemDatabase.get(itemID);
         if (foundItem==null){
-            logger.warn("This user does not exist!");
-            throw new IllegalArgumentException(String.format("User with id %s does not exist!",itemID));
+            logger.warn("This item does not exist!");
+            throw new IllegalArgumentException(String.format("iTEM with id %s does not exist!",itemID));
         }
         return foundItem;
     }

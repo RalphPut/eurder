@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 public class OrderMapper {
 
     public OrderDTO toDto(Order order){
-        return new OrderDTO(order.getOrderId(), order.getItemGroups(), order.getCustomer());
+        return new OrderDTO(order.getOrderId(), order.getItemGroups(), order.getCustomerId());
     }
 
     public List<OrderDTO> toDto(List<Order> orderList){
@@ -21,6 +21,6 @@ public class OrderMapper {
     }
 
     public Order toOrder(OrderDTO orderDTO){
-        return new Order(orderDTO.getItemGroups(), orderDTO.getCustomer());
+        return new Order(orderDTO.getItemGroups(), orderDTO.getCustomerId());
     }
 }

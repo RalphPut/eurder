@@ -57,8 +57,9 @@ public class UserRepository {
     }
 
     public void registerCustomer(Customer user) {
-        if (!existsInDatabase(user.getUuid())) {
-            userDatabase.put(user.getUuid(), user);
+        if (existsInDatabase(user.getUuid())) {
+           throw new IllegalArgumentException();
         }
+        userDatabase.put(user.getUuid(), user);
     }
 }
